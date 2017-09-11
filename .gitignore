@@ -1,0 +1,10 @@
+# Ignore these files
+# https://git-scm.com/docs/gitignore
+
+*~
+*.log
+*.tmp
+*.tmp.*
+~.idea/
+~.tmp/
+.DS_Store
