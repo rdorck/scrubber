@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+
+  "name": "Scrubber",
+  "description": "This extension deletes keys in the Local Storage jStorage object",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "Cleaning_6-128.png",
+    "default_popup": "scrubber.html"
+  },
+  "background": {
+    "scripts": ["scrubber.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "browsingData",
+    "storage",
+    "tabs",
+    "activeTab",
+    "https://philly.com/philly/newsletters/eagles",
+    "https://ajax.googleapis.com/"
+  ]
+}
