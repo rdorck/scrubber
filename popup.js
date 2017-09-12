@@ -93,12 +93,14 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
-/*
- * Document Event Listener
+
+/**
+ * document - Listener fires when DOM finished loading
+ *
+ * @param  {string} 'DOMContentLoaded' description
+ * @param  {function}        function(          description
  */
 document.addEventListener('DOMContentLoaded', function() {
-  colorTrace('**** Hello Scrubber ****', 'blue');
-
   var currentWindow = null;
 
   // Get Current Window
@@ -181,20 +183,14 @@ document.addEventListener('DOMContentLoaded', function() {
     colorTrace('>>>> Completed - All tabs <<<<', 'green');
   });
 
-  // Query Specific Window
-  chrome.tabs.query({'windowId': 426}, function(data) {
-    colorTrace('**** Window Data #426 ****');
-    console.log(data);
-  });
-
   // Add Content Script
-  chrome.tabs.executeScript({
-    file: 'scrubber.js',
-    allFrames: true
-  }, function(response) {
-    colorTrace('\n**** Execute Script Fired cleaning...', 'blue');
-    console.log(response);
-  });
+  // chrome.tabs.executeScript({
+  //   file: 'scrubber.js',
+  //   allFrames: true
+  // }, function(response) {
+  //   colorTrace('\n**** Execute Script Fired cleaning...', 'blue');
+  //   console.log(response);
+  // });
 
   // Get Visible Tab
   chrome.tabs.captureVisibleTab({}, function(data) {
