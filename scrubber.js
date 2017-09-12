@@ -1,25 +1,35 @@
 
 /**
- * Set custom color to console log statements
+ * colorTrace - description
  *
- * @param {string} msg
- * @param {string} color
+ * @param  {string} msg   Text to be displayed in console.log()
+ * @param  {string} color Hex representation of a color or a CSS color by name (i.e. 'purple')
  */
 function colorTrace(msg, color) {
   console.log("%c" + msg, "color:" + color + ";font-weight:bold;");
 }
 
-/**
- * Prints statement to console
- */
-function knock() {
-  console.log('*Knock Knock Knock* Housekeeping.... housekeeping');
+function constructor() {
+  colorTrace('******************************************************************', 'purple');
+  colorTrace('               >>>>    Initializing Scrubber...   <<<<            ', 'purple');
+  colorTrace('                       __              _    _                  ', 'green');
+  colorTrace('    __________       / __| __ ___ _  _| |__| |__  ___ ___      ', 'green');
+  colorTrace('   |  ______  |       \u005C__ \u005C/ _|  _| || |  _ \u005C  _ \u005C/ -_)  _|     ', 'green');
+  colorTrace(' __| |______| |__    |___/\u005C__|_| \u005C_,__|_.__/_.__/\u005C___|_|       ', 'green');
+  colorTrace('|________________|   ________________________________________   ', 'green');
+  colorTrace(' {{{{{{{{{{{{{{{{                                               ', '#c1ab2a');
+  colorTrace(' *o*o*o*o*o*o*o*o*o*o*o*o*o*o                                     ', 'lightblue');
+  colorTrace('                              READY!                              ', 'green');
+  colorTrace('******************************************************************', 'green');
+
 }
 
 /**
- * Set jStorage key:value pair
- * @param key
- * @param value
+ * setKey - Set jStorage key:value pair
+ *
+ * @param  {string} key   Key that will be used to index a value
+ * @param  {string|object} value Data to be stored
+ * @return {type}       description
  */
 function setKey(key, value) {
   if (key === null) {
@@ -79,3 +89,10 @@ function clean() {
     console.log(error);
   }
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  constructor();
+
+  //setKey("pet", "dog");
+});
