@@ -22,6 +22,7 @@ function constructor() {
   colorTrace('                              READY!                              ', 'green');
   colorTrace('******************************************************************', 'green');
 
+
 }
 
 /**
@@ -94,5 +95,18 @@ function clean() {
 document.addEventListener('DOMContentLoaded', function() {
   constructor();
 
-  //setKey("pet", "dog");
+  setKey("pet", "dog");
+
+  chrome.browsingData.settings(function(result) {
+    colorTrace('\n>>>> Getting Browsing Data...', 'purple');
+    console.log(result);
+    colorTrace('**** END - Browsing Data Settings ****', 'green');
+  });
+
+  // chrome.browsingData.removeLocalStorage({}, function(response) {
+  //   colorTrace('\n!!!! Removing LocalStorage with options...', 'red');
+  //   colorTrace(JSON.stringify(removalOptions), 'purple');
+  //   console.log(response);
+  //   colorTrace('**** END - Removing LocalStorage', 'red');
+  // });
 });

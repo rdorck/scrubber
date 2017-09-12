@@ -93,7 +93,6 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
-
 /**
  * document - Listener fires when DOM finished loading
  *
