@@ -15,3 +15,9 @@ panels.elements.createSidebarPane('', function(sidebar) {
   colorTrace('\n>>>> Creating DevTools Sidebar...', 'purple');
   console.log(sidebar);
 });
+
+chrome.runtime.sendMessage({owner: 'devtools'}, function(response) {
+  colorTrace('\n>>>> devtools-chrome.js Sending Message... >>>>', 'purple');
+  console.log(response);
+  colorTrace('**** Completed - Sending Message ****', 'green');
+});

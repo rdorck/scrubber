@@ -93,6 +93,7 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
+
 /**
  * document - Listener fires when DOM finished loading
  *
@@ -100,6 +101,28 @@ function renderStatus(statusText) {
  * @param  {function}        function(          description
  */
 document.addEventListener('DOMContentLoaded', function() {
+  chrome.runtime.sendMessage({owner: "popup"}, function(response) {
+    colorTrace('\n>>>> Popup Sending Message... >>>>', 'purple');
+    console.log(response);
+    colorTrace('**** Completed - Sending Message ****', 'green');
+  });
+
+  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    colorTrace('\n>>>> Getting Incoming Message >>>>', 'purple');
+    console.log(request);
+    colorTrace('\n>>>> Getting Incoming Message Sender >>>>', 'purple');
+    console.log(sender);
+
+    if (request.owner == "extension") {
+      colorTrace('Whoa a message!', 'blue');
+      sendResponse({bye: "caio"});
+    } else {
+      colorTrace('!!!! Request greeting was not welcoming', 'red');
+    }
+
+    colorTrace('**** End - Runtime On Message ****', 'green');
+  });
+
   var currentWindow = null;
 
   // Get Current Window

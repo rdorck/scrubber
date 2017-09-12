@@ -103,6 +103,38 @@ document.addEventListener('DOMContentLoaded', function() {
     colorTrace('**** END - Browsing Data Settings ****', 'green');
   });
 
+
+  /**
+   * Send message to window page from extension
+   *
+   * {string} extensionId   (optional) - 'eepchkfglmhaklfgabnfopghaijabkid'
+   * {object} message       JSON object
+   * {object} options       (optional)
+   * {function} callback
+   */
+  chrome.runtime.sendMessage({owner: 'extension'}, function(response) {
+    colorTrace('\n>>>> Extension Sending Message... >>>>', 'purple');
+    console.log(response);
+    colorTrace('**** Completed - Sending Message ****', 'green');
+  });
+
+  chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    colorTrace('\n>>>> Getting Incoming Message >>>>', 'purple');
+    console.log(request);
+    colorTrace('\n>>>> Getting Incoming Message Sender >>>>', 'purple');
+    console.log(sender);
+
+    // if (request.owner == "extension") {
+    //   colorTrace('Whoa a message!', 'blue');
+    //   sendResponse({bye: "caio"});
+    // } else {
+    //   colorTrace('!!!! Request greeting was not welcoming', 'red');
+    // }
+
+    colorTrace('**** End - Runtime On Message ****', 'green');
+  });
+
+
   // chrome.browsingData.removeLocalStorage({}, function(response) {
   //   colorTrace('\n!!!! Removing LocalStorage with options...', 'red');
   //   colorTrace(JSON.stringify(removalOptions), 'purple');

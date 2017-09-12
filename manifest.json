@@ -14,6 +14,12 @@
     "scripts": ["scrubber.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": ["http://www.philly.com/*"],
+      "js": ["scrubber.js", "devtools-chrome.js"]
+    }
+  ],
   "permissions": [
     "browsingData",
     "storage",
